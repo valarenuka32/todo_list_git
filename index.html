@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo-list">
+            <h2>To-Do List</h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your text">
+                <button onclick="addtask()">Add</button>
+            </div>
+            <ul id="list-continor">
+                    <!-- <li class="checked">Task 1</li>
+                    <li>Task 2</li>
+                    <li>Task 3</li> -->
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    const inputbox=document.getElementById("input-box");
+    const listcontinor=document.getElementById("list-continor");
+
+    function addtask(){
+        if(inputbox.value===''){
+            alert("your must write somthing!")
+        }
+        else{
+            let li=document.createElement("li");
+            li.innerHTML=inputbox.value;
+            listcontinor.appendChild(li);
+            let span=document.createElement("span");
+            span.innerHTML="\u00d7";
+            li.appendChild(span);  
+        }
+        inputbox.value="";
+    }
+
+listcontinor.addEventListener("click",function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+    }
+},false);
+</script>
+</html>
